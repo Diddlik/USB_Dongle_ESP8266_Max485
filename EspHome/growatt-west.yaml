@@ -1,0 +1,94 @@
+substitutions:
+  devicename: growatt-west
+  mqqt_topic: 'sensors'
+  device_unique_id: west
+
+esphome:
+  name: $devicename
+
+esp8266:
+  board: d1_mini
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+#api:
+
+
+mqtt:
+  broker: !secret mqtt_url
+  username: !secret mqtt_user
+  password: !secret mqtt_pass
+  topic_prefix: $mqqt_topic/$devicename
+
+  birth_message:
+    topic: $mqqt_topic/$devicename/status
+    payload: online
+  will_message:
+    topic: $mqqt_topic/$devicename/status
+    payload: offline
+  
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Growatt-Test Fallback Hotspot"
+    password: "zGmhBwfjghjFJYc2l"
+
+captive_portal:
+  
+uart:
+  - id: uart1
+    baud_rate: 9600
+    tx_pin: TX
+    rx_pin: RX
+
+modbus:
+  uart_id: uart1
+  flow_control_pin: D0
+
+sensor:
+  - platform: growatt_solar
+    update_interval: 10s
+    protocol_version: RTU2
+
+    inverter_status:
+      name: Growatt Status Code $device_unique_id
+
+    phase_a:
+      voltage:
+          name: Growatt Voltage Phase A $device_unique_id
+      current:
+          name: Growatt Current Phase A $device_unique_id
+      active_power:
+          name: Growatt Power Phase A $device_unique_id
+
+    pv1:
+      voltage:
+          name: Growatt PV1 Voltage $device_unique_id
+      current:
+          name: Growatt PV1 Current $device_unique_id
+      active_power:
+          name: Growatt PV1 Active Power $device_unique_id
+
+    active_power:
+      name: Growatt Grid Active Power $device_unique_id
+
+    pv_active_power:
+      name: Growatt PV Active Power $device_unique_id
+
+    frequency:
+      name: Growatt Frequency $device_unique_id
+
+    energy_production_day:
+      name: Growatt Today's Generation $device_unique_id
+
+    total_energy_production:
+      name: Growatt Total Energy Production $device_unique_id
+
+    inverter_module_temp:
+      name: Growatt Inverter Module Temp $device_unique_id
