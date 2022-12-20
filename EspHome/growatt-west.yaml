@@ -89,6 +89,10 @@ sensor:
 
     total_energy_production:
       name: Growatt Total Energy Production $device_unique_id
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: "total_increasing"
+      accuracy_decimals: 3
 
     inverter_module_temp:
       name: Growatt Inverter Module Temp $device_unique_id
