@@ -15,6 +15,9 @@ logger:
 # Enable Home Assistant API
 #api:
 
+# uncomment, if you use dallas sensor
+#dallas:
+#  - pin: GPIO04
 
 mqtt:
   broker: !secret mqtt_url
@@ -96,3 +99,14 @@ sensor:
 
     inverter_module_temp:
       name: Growatt Inverter Module Temp $device_unique_id
+
+# If you use Dallas Sensor, put your dallas Sensor ID hier
+# to get the sensor ID, change temporary a line 49: baud_rate: 115200
+# Install and in log you find a line: 
+# [D][dallas.sensor:082]:   Found sensors:
+# [D][dallas.sensor:084]:     0x1c0000031edd2a28
+# don't forget to change the line 49 back: baud_rate: 9600 and install again
+# --------------------END OF DESCRIPTION -------------------------------
+#  - platform: dallas
+#    address: 0x1c0000031edd2a28    
+#    name: "Growatt USB Temperature"

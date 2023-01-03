@@ -11,6 +11,8 @@ When Growatt produces the current, it also supplies the dongle and sends the cor
 
 The main part is solved by ESPHome. The configuration file is included in the repository. Quite commonly flash Wemos D1 Mini with ESPHome, customize the config for yourself. 
 
+Dallas Sensor ist optionaly. If you don't want to use it, you schould not solder a R1. 
+
 #Images
 
 ![3dModel](Images/3dModel.jpg)
