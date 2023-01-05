@@ -11,7 +11,9 @@ esp8266:
 
 # Enable logging
 logger:
-
+  level: DEBUG
+  hardware_uart: UART1
+  
 # Enable Home Assistant API
 #api:
 
@@ -101,11 +103,10 @@ sensor:
       name: Growatt Inverter Module Temp $device_unique_id
 
 # If you use Dallas Sensor, put your dallas Sensor ID hier
-# to get the sensor ID, change temporary a line 49: baud_rate: 115200
-# Install and in log you find a line: 
+# to get the sensor ID see: https://esphome.io/components/sensor/dallas.html#getting-sensor-ids
+# see log output in WEB UI ESPHome: 
 # [D][dallas.sensor:082]:   Found sensors:
 # [D][dallas.sensor:084]:     0x1c0000031edd2a28
-# don't forget to change the line 49 back: baud_rate: 9600 and install again
 # --------------------END OF DESCRIPTION -------------------------------
 #  - platform: dallas
 #    address: 0x1c0000031edd2a28    
