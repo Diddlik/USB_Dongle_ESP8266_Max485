@@ -13,7 +13,7 @@ The main part is solved by ESPHome. The configuration file is included in the re
 
 Dallas Sensor ist optionaly. If you don't want to use it, you schould not solder a R1. 
 
-#Images
+# Images
 
 ![3dModel](Images/3dModel.jpg)
 ![Pic1](Images/20221218184357.jpg)
