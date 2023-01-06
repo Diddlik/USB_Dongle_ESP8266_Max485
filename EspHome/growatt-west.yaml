@@ -9,13 +9,16 @@ esphome:
 esp8266:
   board: d1_mini
 
-# Enable logging
+# disable logger
 logger:
-  level: DEBUG
-  hardware_uart: UART1
+  baud_rate: 0
   
 # Enable Home Assistant API
 #api:
+
+# Enable ota. Uncomment passwort if you need
+ota:
+#  password: !secret ota_password
 
 # uncomment, if you use dallas sensor
 #dallas:
